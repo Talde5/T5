@@ -1,0 +1,14 @@
+#cajalogin{
+	display:none;
+	position:absolute;
+	background:lightgrey;
+  height: 100px;
+  width: 200px;
+  left: 50%;
+  margin-left: -100px;
+  top: 50%;
+  margin-top: -100px;
+}
+.input-login{
+	display:block;
+}

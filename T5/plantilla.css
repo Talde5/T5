@@ -1,0 +1,104 @@
+html{
+	background-color: #6f7b85;
+	margin: 1%;
+}
+#cabecera{
+	margin-bottom: 10%;
+}
+img {
+	border-radius: 50%;
+}
+h1 {
+	padding-top: 8%;
+}
+#regis {
+	text-align: right;
+	line-height: 3%;
+}
+
+
+
+/****************************************FLEX*********************************************/
+#cabecera{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+#obj_cab1{
+	flex: 3 1 100px;
+}
+#obj_cab2{
+	flex: 5 1 100px;
+}
+#regis{
+	flex: 2 1 100px;
+	
+}
+#cuerpo {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.post {
+	flex: 8 1 150px;
+	max-width: 50%;
+
+}
+
+/****************************TAMAÑO ELEMENTOS Y COLOCACIÓN****************************/
+
+#logo{
+	max-width: 30%;
+	padding: 2%;
+}
+#regis{
+	float:right;
+
+}
+#regis a{
+	text-decoration: none;
+	color:  #ea8d1d;	
+}
+#cuerpo{
+	width: 70%;
+	float:left;
+}
+li a{
+	
+	text-decoration: none;
+}
+#menu{
+	float: right;
+	width:20%;
+}
+#menu_1{
+	text-align: justify;
+	list-style: none;
+}
+#menu_1 > li > a{
+	color: #1dea98;
+}
+.menu_2{
+	text-align: justify;
+	list-style: none;
+	/*display: none;*/
+}
+.menu_2 a{
+	color:  #9b93be;
+}
+#des_2018{
+	display: none;
+}
+#des_2017{
+	display: none;
+}
+#des_2016{
+	display: none;
+}
+#des_2015{
+	display: none;
+}
+#des_2014{
+	display: none;
+}

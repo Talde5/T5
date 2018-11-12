@@ -1,0 +1,68 @@
+html{
+	background-color: #6f7b85;
+	margin: 1%;
+}
+#cabecera{
+	margin-bottom: 10%;
+}
+header img {
+	border-radius: 50%;
+}
+h1 {
+	padding-top: 8%;
+}
+#regis {
+	text-align: right;
+	line-height: 3%;
+}
+
+#cabecera{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+#obj_cab1{
+	flex: 3 1 100px;
+}
+#obj_cab2{
+	flex: 5 1 100px;
+}
+#regis{
+	flex: 2 1 100px;
+	
+}
+#cuerpo {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+}
+#Datos {
+	flex: 8 1 100px;
+	
+}
+#imagen {
+	
+	flex: 6 1 100px;
+	/*max-width: 25%;
+	max-height: 30%;*/
+	border-radius: 30%;
+	align-self: flex-end;
+	justify-content: space-around;
+}
+
+/****************************TAMAÑO ELEMENTOS Y COLOCACIÓN****************************/
+
+#logo{
+	max-width: 30%;
+	padding: 2%;
+}
+#regis{
+	float:right;
+
+}
+#regis a{
+	text-decoration: none;
+	color:  #ea8d1d;	
+}
+
+
