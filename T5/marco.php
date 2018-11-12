@@ -1,5 +1,4 @@
  <?php session_start();
- error_reporting(0);
 
      $sarrera=$_GET['IdSarrera'];
  ?>
@@ -19,7 +18,7 @@
               echo "conexion exitosa. <br/>"; 
               
               
-              $consulta="SELECT IdSarrera, Tituloak, Gaia, Describapena , Bisitak, Data, Especialidades, Jefe_de_cocina, Localizacion,Medios_de_pago, Precios_medios, Servicios, Estrellas, Contacto, imagenes FROM Sarrerak WHERE IdSarrera= $sarrera";
+              $consulta="SELECT IdSarrera, Tituloak, Gaia, Describapena , Bisitak, Data, Especialidades, Jefe_de_cocina, Localizacion,Medios_de_pago, Precios_medios, Servicios, Estrellas, Contacto FROM Sarrerak WHERE IdSarrera= $sarrera";
 
              $resultado = $connect-> query($consulta);
               if (!$resultado) {
@@ -31,36 +30,213 @@
 
 //escripe los resultados del select
         while ($row =mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-   
+     ?>
+     <h2>
+     <?php
              echo $row['Tituloak'];
-             echo $row['Gaia'];   
-             echo $row['Describapena'];  
-             echo $row['Bisitak'];  
-             echo $row['Data'];  
-             echo $row['Especialidades'];  
-             echo $row['Jefe_de_cocina'];  
-             echo $row['Localizacion'];  
-             echo $row['Medios_de_pago'];  
-             echo $row['Precios_medios']; 
-             echo $row['Servicios']; 
-             echo $row['Estrellas'];  
-             echo $row['Contacto']; 
-             echo $row['imagenes']; 
-             ?>
-             <img src="<?php echo $row['imagenes'];?>">
-            <?php
-        }
 
       ?>
-      
+      </h2>
+      <p>
+      <h4>
+      <?php
 
- </div>
+             echo $row['Gaia']; 
+      ?>
+      </h4>
+      </p>
+      <hr>
+       <p>
+      <?php  
+             echo $row['Describapena'];  
+      ?>
+      </p>
+       <p>
+      <?php
+             echo $row['Bisitak'];
+      ?>
+      </p>
+       <p>
+      <?php  
+             echo $row['Data'];
+      ?>
+      </p>
+       <p>
+        <ul>
+            <li>Especialidades
+              <ul>
+                
+              
+      <?php  
+            /*echo $row['Especialidades'];*/
+            $especial = explode(".",$row['Especialidades']);
+            $array_esp = count($especial) - 1;
+             for ($i=0; $i < $array_esp ; $i++) {  
+            ?>
+            <li>
+              <?php
+              echo $especial[$i];
+            ?>
+          </li>
+          <?php
+             }
+
+               
+            
+      ?>
+            </ul>
+          </li>
+        </ul>
+      </p>
+       <p>
+        <ul>
+          <li>Jefe de cocina
+            <ul>
+              <li>
+      <?php  
+             echo $row['Jefe_de_cocina'];
+      ?>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+       <p>
+        <ul>
+          <li>Localizacion 
+            <ul>
+              <li>
+      <?php  
+             echo $row['Localizacion'];
+      ?>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+       <p>
+        <ul>
+          <li>Medios de pago 
+             <ul>
+      <?php  
+            /*echo $row['Medios_de_pago'];*/
+
+            $precio = explode("-",$row['Medios_de_pago']);
+            $array_pre = count($precio);
+
+            for ($i=0; $i < $array_pre ; $i++) { 
+      ?>   
+     
+        <li>
+      <?php    
+             echo $precio[$i];
+      ?> 
+              </li>
+      <?php 
+        }
+      ?>
+            </ul>
+          </li>
+      </ul> 
+      </p>
+       <p>
+          <ul>
+            <li>Precios medios
+              <ul>
+                <li>
+      <?php  
+             echo $row['Precios_medios']; 
+       ?>
+                </li>
+              </ul>
+            </li>
+        </ul>
+      </p>
+       <p>
+        <ul>
+            <li> Servicios
+              <ul>
+            
+      <?php 
+
+
+            $servi = explode("-",$row['Servicios']);
+            $array_ser = count($servi);
+
+            for ($i=0; $i < $array_ser ; $i++) { 
+        ?>
+              
+        <li>
+          <?php 
+           echo $servi[$i];
+            ?>
+          </li>
+
+
+          <?php 
+            }
+          ?>
+            </ul>
+          </li>
+        </ul>
+
+
+      </p>
+       <p>
+        <ul>
+          <li>Estrellas Michelin
+            <ul>
+              <li>
+      <?php  
+             echo $row['Estrellas'];
+       ?>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+       <p>
+        <ul>
+          <li>Contactos
+            <ul>
+            
+      <?php 
+
+
+            $contactos = explode(": ",$row['Contacto']);
+            $array_cont = count($contactos);
+
+            for ($i=0; $i < $array_cont ; $i++) { 
+        ?>
+              
+        <li>
+          <?php 
+           echo $contactos[$i];
+            ?>
+          </li>
+
+
+          <?php 
+            }
+          ?>
+            </ul>
+     <!--  <?php   
+             echo $row['Contacto']; 
+         
+        }
+
+      ?> -->
+        </li>
+      </ul>
+    </p>
       <?php 
 
        if(isset($_SESSION['username'])){   
       ?>
 
- 
+ <div>
+   
+
 <form id="form_iruzkina" action="marco.php?IdSarrera=<?php echo $sarrera; ?>" method="post">
 
           iruzkina :<textarea name="Edukia" class="caja" id="Edukia"> </textarea><br>
@@ -85,6 +261,8 @@
 
         <input type="reset" value="Garbitu" >
 </form>
+
+ </div>
       <?php 
 
          }else{
@@ -143,6 +321,7 @@
     }
 
 ?>
+
 <?php 
       try  { $connect= new mysqli("localhost","root","","proyecto_T5");
        
@@ -160,21 +339,60 @@
     while ($row =mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
 
  ?>
+ <br>
 <div class="comentariosOcultar"> 
-    <?php 
- echo $row['Nick'];
- echo $row['Edukia'];   
- echo $row['Iritzia'];
-$fechabuena=$row['Data'];
-$fechabuen=date("d/m/Y", strtotime($fechabuena));
-echo $fechabuen;
+
+
+
+  <table>
+      <tr>
+        <th>
+		
+		<?php 	 
+		 
+		  
+		 
+		 
+		$fechabuena=$row['Data'];
+		$fechabuen=date("d/m/Y", strtotime($fechabuena));
+		echo $fechabuen;
 
 
    ?>
+		</th>
+		<th>
+    <?php 
+		 echo $row['Nick'];
+	  ?>
+		</th>
+	</tr>	
+		<tr>
+			<td>
+	<?php 
+		 echo $row['Edukia'];   
+		
+		 
+	 ?>
+	 </td>	
+	</tr>
+	 <tr>
+			<td>nota:
+	 <?php
+	 echo $row['Iritzia'];
+	 ?>
+	 
+		</td>	
+	</tr>
+	 
+	
+     
+    </tr>
+   </table>  
+   <br>
  </div>
-<?php 
+	<?php 
 
- echo "fse";}    
+		;}    
       
         ?>
 
