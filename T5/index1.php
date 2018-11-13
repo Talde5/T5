@@ -28,34 +28,7 @@
           document.getElementById("des_2018").style.display="none";
         }
       }
-      function des_2017(){
-        if(document.getElementById("des_2017").style.display == "none"){
-          document.getElementById("des_2017").style.display="block";
-        } else {
-          document.getElementById("des_2017").style.display="none";
-        }
-      }
-      function des_2016(){
-        if(document.getElementById("des_2016").style.display == "none"){
-          document.getElementById("des_2016").style.display="block";
-        } else {
-          document.getElementById("des_2016").style.display="none";
-        }
-      }
-      function des_2015(){
-        if(document.getElementById("des_2015").style.display == "none"){
-          document.getElementById("des_2015").style.display="block";
-        } else {
-          document.getElementById("des_2015").style.display="none";
-        }
-      }
-      function des_2014(){
-        if(document.getElementById("des_2014").style.display == "none"){
-          document.getElementById("des_2014").style.display="block";
-        } else {
-          document.getElementById("des_2014").style.display="none";
-        }
-      }
+      
     </script>
     <header id="cabecera">
       <img id="logo" id="obj_cab1" src="img/comida.jpg">
@@ -85,7 +58,7 @@
     //Botones PARA REGISTRASE O CREAR UNA CUENTA    
 ?>
 
-      <h4 id="regis" ><a href="Registrarse.php">Sign in</a> or >
+      <h4 id="regis" ><a href="Registrarse.php">Sign up</a> or >
 
    <button onclick="mostrarCuadro();">Log in</button>
   </h4> 
@@ -161,6 +134,7 @@
                       }
                       else {
                         echo "Usuario y/o contraseña mal introducidos.  <br/>";
+  header( "Refresh:2; url=index1.php", true, 303);
 
                       }
                     
@@ -253,88 +227,84 @@ $IdSarrera=$row['IdSarrera'];
 
 
     <aside id="menu">
+
+    <?php 
+ try  { $connect= new mysqli("localhost","root","","proyecto_T5");
+            echo "conexion exitosa. <br/>"; 
+            
+            
+            $consulta="SELECT IdSarrera,Tituloak,Data FROM Sarrerak";
+               $resultado = $connect-> query($consulta);
+
+              if ($resultado) {
+//comprobar que a realizado la conexion y guarda los datos
+              echo "datos sacados. <br/>";
+            }
+            else {
+              echo "error en la ejecución de la consulta. <br/>";
+            }
+
+          }  catch (PDOException $e) { 
+        echo "conexion fallida. <br/>" . $e->getMessage();
+                                      }
+//escripe los resltados del select
+  ?>
       <nav>
         <ul id="menu_1">
-          <li><a onclick="des_2018();">2018</a>
+        	<li><a onclick="des_2018();">2018</a>
+        
+          
             <ul class="menu_2" id="des_2018">
-              <li><a href="" title="">Urtarrila</a></li>
-              <li><a href="" title="">Otsaila</a></li>
-              <li><a href="" title="">Martxoa</a></li>
-              <li><a href="" title="">Apirila</a></li>
-              <li><a href="" title="">Maiatza</a></li>
-              <li><a href="" title="">Ekaina</a></li>
-              <li><a href="" title="">Uztaila</a></li>
-              <li><a href="" title="">Abustua</a></li>
-              <li><a href="" title="">Iraila</a></li>
-              <li><a href="" title="">Urria</a></li>
-              <li><a href="" title="">Azaroa</a></li>
-              <li><a href="" title="">Abendua</a></li>
+              <li>Urtarrila
+              
+              </li>
+              <li>Otsaila
+			
+              </li>
+              <li>Martxoa
+			
+              </li>
+              <li>Apirila
+			
+              </li>
+              <li>Maiatza
+			
+              </li>
+              <li>Ekaina
+			
+              </li>
+              <li>Uztaila
+			
+              </li>
+              <li>Abustua
+				              	
+              </li>
+              <li>Iraila
+				
+              </li>
+              <li>Urria
+				
+              </li>
+              <li>Azaroa
+				<ul>
+              		<?php
+				    while ($row =mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+				    	$data = explode("-", $row['Data']);
+				    	$IdSarrera1=$row['IdSarrera'];
+				    	
+					?>
+              		
+              			<li><a href="marco.php?IdSarrera=<?php echo $IdSarrera1; ?>"><?php echo $row['Tituloak'] ?></a></li>
+              		
+              	<?php
+              }
+              ?>
+             	 </ul>
+              </li>
+              <li>Abendua</li>
             </ul>
           </li>
-          <li><a onclick="des_2017();">2017</a>
-            <ul class="menu_2" id="des_2017">
-              <li><a href="" title="">Urtarrila</a></li>
-              <li><a href="" title="">Otsaila</a></li>
-              <li><a href="" title="">Martxoa</a></li>
-              <li><a href="" title="">Apirila</a></li>
-              <li><a href="" title="">Maiatza</a></li>
-              <li><a href="" title="">Ekaina</a></li>
-              <li><a href="" title="">Uztaila</a></li>
-              <li><a href="" title="">Abustua</a></li>
-              <li><a href="" title="">Iraila</a></li>
-              <li><a href="" title="">Urria</a></li>
-              <li><a href="" title="">Azaroa</a></li>
-              <li><a href="" title="">Abendua</a></li>
-            </ul>
-          </li>
-          <li><a onclick="des_2016();">2016</a>
-            <ul class="menu_2" id="des_2016">
-              <li><a href="" title="">Urtarrila</a></li>
-              <li><a href="" title="">Otsaila</a></li>
-              <li><a href="" title="">Martxoa</a></li>
-              <li><a href="" title="">Apirila</a></li>
-              <li><a href="" title="">Maiatza</a></li>
-              <li><a href="" title="">Ekaina</a></li>
-              <li><a href="" title="">Uztaila</a></li>
-              <li><a href="" title="">Abustua</a></li>
-              <li><a href="" title="">Iraila</a></li>
-              <li><a href="" title="">Urria</a></li>
-              <li><a href="" title="">Azaroa</a></li>
-              <li><a href="" title="">Abendua</a></li>
-            </ul>
-          </li>
-          <li><a onclick="des_2015();">2015</a>
-            <ul class="menu_2" id="des_2015">
-              <li><a href="" title="">Urtarrila</a></li>
-              <li><a href="" title="">Otsaila</a></li>
-              <li><a href="" title="">Martxoa</a></li>
-              <li><a href="" title="">Apirila</a></li>
-              <li><a href="" title="">Maiatza</a></li>
-              <li><a href="" title="">Ekaina</a></li>
-              <li><a href="" title="">Uztaila</a></li>
-              <li><a href="" title="">Abustua</a></li>
-              <li><a href="" title="">Iraila</a></li>
-              <li><a href="" title="">Urria</a></li>
-              <li><a href="" title="">Azaroa</a></li>
-              <li><a href="" title="">Abendua</a></li>
-            </ul>
-          </li>
-          <li><a onclick="des_2014();">2014</a>
-            <ul class="menu_2" id="des_2014">
-              <li><a href="" title="">Urtarrila</a></li>
-              <li><a href="" title="">Otsaila</a></li>
-              <li><a href="" title="">Martxoa</a></li>
-              <li><a href="" title="">Apirila</a></li>
-              <li><a href="" title="">Maiatza</a></li>
-              <li><a href="" title="">Ekaina</a></li>
-              <li><a href="" title="">Uztaila</a></li>
-              <li><a href="" title="">Abustua</a></li>
-              <li><a href="" title="">Iraila</a></li>
-              <li><a href="" title="">Urria</a></li>
-              <li><a href="" title="">Azaroa</a></li>
-              <li><a href="" title="">Abendua</a></li>
-            </ul>
-          </li>
+  
         </ul>
       </nav>
 
